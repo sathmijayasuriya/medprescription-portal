@@ -1,1 +1,0 @@
-# medprescription-portal
