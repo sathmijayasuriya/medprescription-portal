@@ -32,12 +32,13 @@ public class QuotationServiceImpl implements QuotationService{
         return quotationId;
     }
 
-    public QuotationResponseDTO getQuotation(Long quotationId) {
-        return quotationDAO.getQuotation(quotationId);
+    public QuotationResponseDTO getQuotation(Long userId, Long prescriptionId) {
+        return quotationDAO.getQuotation(userId, prescriptionId);
     }
 
+
     public void updateQuotationStatus(Long quotationId, String status, Long userId) {
-        quotationDAO.updateQuotationStatus(quotationId, status);
-        quotationDAO.logAction(quotationId, userId, status);
+        quotationDAO.updateQuotationStatus(quotationId, status);//UPDATE Quotations TABLE STATUS
+        quotationDAO.logAction(quotationId, userId, status); // UPDATE Quotation_Actions TABLE
     }
 }

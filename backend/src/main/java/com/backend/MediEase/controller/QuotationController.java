@@ -37,10 +37,11 @@ public class QuotationController {
 //        return quotationService.createQuotation(requestDTO);
     }
 
-    @GetMapping("/{quotationId}")
-    public QuotationResponseDTO getQuotation(@PathVariable Long quotationId) {
-        return quotationService.getQuotation(quotationId);
+    @GetMapping("/getQutations")
+    public QuotationResponseDTO getQuotation(@RequestParam Long userId, @RequestParam Long prescriptionId) {
+        return quotationService.getQuotation(userId, prescriptionId);
     }
+
 
     @PatchMapping("/{quotationId}/status")
     public void updateQuotationStatus(@PathVariable Long quotationId, @RequestParam String status, @RequestParam Long userId) {

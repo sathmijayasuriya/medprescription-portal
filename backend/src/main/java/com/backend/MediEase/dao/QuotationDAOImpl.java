@@ -6,14 +6,10 @@ import com.backend.MediEase.model.Quotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -37,12 +33,12 @@ public class QuotationDAOImpl implements QuotationDAO{
     }
 
     // Fetch quotation by ID
-    public QuotationResponseDTO getQuotation(Long quotationId) {
-        String sql = "SELECT * FROM Quotations WHERE quotation_id = ?";
-        Quotation quotation = jdbcTemplate.queryForObject(sql, new Object[]{quotationId}, new QuotationRowMapper());
+    public QuotationResponseDTO getQuotation(Long userId, Long prescriptionId) {
+        String sql = "SELECT * FROM Quotations WHERE user_id = ? AND prescription_id = ?";
+        Quotation quotation = jdbcTemplate.queryForObject(sql, new Object[]{userId, prescriptionId}, new QuotationRowMapper());
 
         String detailsSql = "SELECT * FROM Quotation_Details WHERE quotation_id = ?";
-        List<QuotationDetailDTO> details = jdbcTemplate.query(detailsSql, new Object[]{quotationId}, new QuotationDetailRowMapper());
+        List<QuotationDetailDTO> details = jdbcTemplate.query(detailsSql, new Object[]{quotation.getQuotationId()}, new QuotationDetailRowMapper());
 
         QuotationResponseDTO responseDTO = new QuotationResponseDTO();
         responseDTO.setQuotationId(quotation.getQuotationId());
@@ -52,6 +48,7 @@ public class QuotationDAOImpl implements QuotationDAO{
         responseDTO.setQuotationDetails(details);
         return responseDTO;
     }
+
     // Update quotation status
     public void updateQuotationStatus(Long quotationId, String status) {
         String sql = "UPDATE Quotations SET status = ? WHERE quotation_id = ?";
