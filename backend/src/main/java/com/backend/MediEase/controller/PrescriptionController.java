@@ -36,7 +36,6 @@ public class PrescriptionController {
         return ResponseEntity.ok("Prescription added successfully!");
     }
 
-
     @GetMapping(RestURI.GET_ALL_PRESCRIPTIONS)
     public ResponseEntity<List<PrescriptionResponseDTO>> getAllPrescriptions() {
         return ResponseEntity.ok(prescriptionService.getAllPrescriptions());

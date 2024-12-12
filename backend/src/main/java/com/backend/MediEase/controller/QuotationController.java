@@ -1,12 +1,10 @@
 package com.backend.MediEase.controller;
 
 import com.backend.MediEase.constants.RestURI;
-import com.backend.MediEase.dto.QuotationActionRequestDTO;
 import com.backend.MediEase.dto.QuotationRequestDTO;
 import com.backend.MediEase.dto.QuotationResponseDTO;
 import com.backend.MediEase.service.QuotationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
