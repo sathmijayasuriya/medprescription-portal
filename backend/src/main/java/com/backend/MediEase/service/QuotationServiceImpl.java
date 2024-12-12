@@ -32,9 +32,10 @@ public class QuotationServiceImpl implements QuotationService{
         return quotationId;
     }
 
-    public QuotationResponseDTO getQuotation(Long userId, Long prescriptionId) {
-        return quotationDAO.getQuotation(userId, prescriptionId);
+    public List<QuotationResponseDTO> getQuotations(Long userId, Long prescriptionId) {
+        return quotationDAO.getQuotations(userId, prescriptionId);
     }
+
 
 
     public void updateQuotationStatus(Long quotationId, String status, Long userId) {

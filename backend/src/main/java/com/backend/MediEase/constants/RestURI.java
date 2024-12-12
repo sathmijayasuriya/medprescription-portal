@@ -20,9 +20,9 @@ public class RestURI {
 
     //Quotation
     public static final String CREATE_QUOTATION = "/createQuotation";
-    public static final String GET_QUOTATIONS_BY_UID = "/getUserQuotations/{userId}";
-    public static final String GET_QUOTATIONS_BY_PID = "/getUserQuotations/{userId}";
+    public static final String GET_QUOTA_BY_UID = "/getUserQuotations";
 
+    public static final String GET_QUOTATIONS_BY_PID = "/getUserQuotations/{userId}";
     public static final String PERFORM_ACTION_QUOTATION = "/performActionOnQuotation";
 
 

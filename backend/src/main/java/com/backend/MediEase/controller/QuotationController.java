@@ -37,9 +37,9 @@ public class QuotationController {
 //        return quotationService.createQuotation(requestDTO);
     }
 
-    @GetMapping("/getQutations")
-    public QuotationResponseDTO getQuotation(@RequestParam Long userId, @RequestParam Long prescriptionId) {
-        return quotationService.getQuotation(userId, prescriptionId);
+    @GetMapping(RestURI.GET_QUOTA_BY_UID)
+    public List<QuotationResponseDTO> getQuotations(@RequestParam Long userId, @RequestParam Long prescriptionId) {
+        return quotationService.getQuotations(userId, prescriptionId);
     }
 
 

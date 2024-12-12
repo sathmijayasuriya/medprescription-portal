@@ -33,21 +33,24 @@ public class QuotationDAOImpl implements QuotationDAO{
     }
 
     // Fetch quotation by ID
-    public QuotationResponseDTO getQuotation(Long userId, Long prescriptionId) {
+    public List<QuotationResponseDTO> getQuotations(Long userId, Long prescriptionId) {
         String sql = "SELECT * FROM Quotations WHERE user_id = ? AND prescription_id = ?";
-        Quotation quotation = jdbcTemplate.queryForObject(sql, new Object[]{userId, prescriptionId}, new QuotationRowMapper());
+        List<Quotation> quotations = jdbcTemplate.query(sql, new Object[]{userId, prescriptionId}, new QuotationRowMapper());
 
-        String detailsSql = "SELECT * FROM Quotation_Details WHERE quotation_id = ?";
-        List<QuotationDetailDTO> details = jdbcTemplate.query(detailsSql, new Object[]{quotation.getQuotationId()}, new QuotationDetailRowMapper());
+        return quotations.stream().map(quotation -> {
+            String detailsSql = "SELECT * FROM Quotation_Details WHERE quotation_id = ?";
+            List<QuotationDetailDTO> details = jdbcTemplate.query(detailsSql, new Object[]{quotation.getQuotationId()}, new QuotationDetailRowMapper());
 
-        QuotationResponseDTO responseDTO = new QuotationResponseDTO();
-        responseDTO.setQuotationId(quotation.getQuotationId());
-        responseDTO.setPrescriptionId(quotation.getPrescriptionId());
-        responseDTO.setStatus(quotation.getStatus());
-        responseDTO.setCreatedAt(quotation.getCreatedAt());
-        responseDTO.setQuotationDetails(details);
-        return responseDTO;
+            QuotationResponseDTO responseDTO = new QuotationResponseDTO();
+            responseDTO.setQuotationId(quotation.getQuotationId());
+            responseDTO.setPrescriptionId(quotation.getPrescriptionId());
+            responseDTO.setStatus(quotation.getStatus());
+            responseDTO.setCreatedAt(quotation.getCreatedAt());
+            responseDTO.setQuotationDetails(details);
+            return responseDTO;
+        }).toList();
     }
+
 
     // Update quotation status
     public void updateQuotationStatus(Long quotationId, String status) {
