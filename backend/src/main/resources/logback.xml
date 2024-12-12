@@ -5,7 +5,7 @@
         </encoder>
     </appender>
     <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
-        <file>bookReview.log</file>
+        <file>medi.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
