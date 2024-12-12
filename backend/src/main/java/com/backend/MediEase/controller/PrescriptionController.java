@@ -8,6 +8,7 @@ import com.backend.MediEase.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -19,13 +20,22 @@ public class PrescriptionController {
     private PrescriptionService prescriptionService;
 
     @PostMapping(RestURI.ADD_PRESCRIPTION)
-    public ResponseEntity<String> addPrescription(@RequestBody PrescriptionRequestDTO requestDTO) {
-        if (requestDTO.getImagePaths() == null || requestDTO.getImagePaths().size() > 5) {
+    public ResponseEntity<String> addPrescription(
+            @RequestParam Long userId,
+            @RequestParam String note,
+            @RequestParam String deliveryAddress,
+            @RequestParam List<MultipartFile> imagePaths) {
+
+        if (imagePaths.size() > 5) {
             return ResponseEntity.badRequest().body("Maximum 5 images allowed!");
         }
-        prescriptionService.addPrescription(requestDTO);
+
+        // Process the data and save prescription and images
+        prescriptionService.addPrescription(userId, note, deliveryAddress, imagePaths);
+
         return ResponseEntity.ok("Prescription added successfully!");
     }
+
 
     @GetMapping(RestURI.GET_ALL_PRESCRIPTIONS)
     public ResponseEntity<List<PrescriptionResponseDTO>> getAllPrescriptions() {
