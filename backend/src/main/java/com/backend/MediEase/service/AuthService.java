@@ -23,10 +23,10 @@ public class AuthService {
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     // Register user/pharmacist
-    public String registerUser(UserReqRegisterDTO dto) {
+    public Optional<UserResponseDTO> registerUser(UserReqRegisterDTO dto) {
         Optional<User> existingUser = authDAO.findByEmail(dto.getEmail());
         if (existingUser.isPresent()) {
-            return "Email is already registered";
+            return Optional.empty(); // Return empty if user already exists
         }
 
         User user = new User();
@@ -39,7 +39,18 @@ public class AuthService {
         user.setUserType(dto.getUserType());
 
         int rowsAffected = authDAO.registerUser(user);
-        return rowsAffected > 0 ? "Registration successful" : "Registration failed";
+        if (rowsAffected > 0) {
+            UserResponseDTO response = new UserResponseDTO();
+            response.setUserId(user.getUserId());
+            response.setName(user.getName());
+            response.setEmail(user.getEmail());
+            response.setAddress(user.getAddress());
+            response.setContactNo(user.getContactNo());
+            response.setDob(user.getDob());
+            response.setUserType(user.getUserType());
+            return Optional.of(response);
+        }
+        return Optional.empty(); // Return empty if registration fails
     }
 
     // Login user/pharmacist
@@ -56,6 +67,6 @@ public class AuthService {
             response.setUserType(user.get().getUserType());
             return Optional.of(response);
         }
-        return Optional.empty();
+        return Optional.empty(); // Return empty if credentials are incorrect
     }
 }

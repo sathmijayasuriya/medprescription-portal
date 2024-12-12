@@ -1,4 +1,4 @@
-package com.review.backend;
+package com.backend.MediEase;
 
 
 import org.springframework.context.annotation.Bean;
