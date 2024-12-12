@@ -15,8 +15,11 @@ public class RestURI {
     public static final String GET_DRUG_BY_ID = "/drug/getDrugById/{id}";
 
     //prescription
+    public static final String ADD_PRESCRIPTION = "/prescriptions/addPrescription";
+    public static final String GET_ALL_PRESCRIPTIONS = "/prescriptions/getAllPrescriptions";
 
     //Quotation
+
 
 
 }

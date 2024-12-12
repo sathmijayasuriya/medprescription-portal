@@ -9,9 +9,7 @@ public interface DrugService {
 
 
          void addDrug(DrugRequestDTO drugRequestDTO) ;
-
          List<DrugResponseDTO> getAllDrugs() ;
-
          DrugResponseDTO getDrugById(Long drugId) ;
 
     }
