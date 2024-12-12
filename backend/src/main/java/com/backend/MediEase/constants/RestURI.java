@@ -19,6 +19,10 @@ public class RestURI {
     public static final String GET_ALL_PRESCRIPTIONS = "/prescriptions/getAllPrescriptions";
 
     //Quotation
+    public static final String CREATE_QUOTATION = "/createQuotation";
+    public static final String GET_ALL_QUOTATION = "/getUserQuotations/{userId}";
+    public static final String PERFORM_ACTION_QUOTATION = "/performActionOnQuotation";
+
 
 
 
