@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import headerImage from "../../Assets/images/headerImage.png";
 import AddPrescription from "../../Views/User/components/AddPrescription";
 
-export default function HeaderAuth() {
+export default function HeaderAuthPharmacist() {
   const location = useLocation();
   const isInSignIn = location.pathname.includes("sign-in");
   return (

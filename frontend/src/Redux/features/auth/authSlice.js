@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-// Get user from localStorage
+// Get user from localStorage (Handling both User and Pharmacy)
 const localStorageUser = JSON.parse(localStorage.getItem("user"));
 const user = localStorageUser ? localStorageUser : null;
 
@@ -13,17 +13,15 @@ const initialState = {
   message: "",
 };
 
-// Register user
+// Register user or pharmacist
 export const register = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
     try {
-      return await authService.register(user);
+      return await authService.register(user); // Assuming the register function is generic for both roles
     } catch (error) {
       const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
+        (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
@@ -31,10 +29,10 @@ export const register = createAsyncThunk(
   }
 );
 
-// Login user
+// Login user or pharmacist
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
-    return await authService.login(user);
+    return await authService.login(user); // Login for both roles, check role server-side
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -44,6 +42,7 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+// Update user info (both for regular users and pharmacists)
 export const updateUserInfo = createAsyncThunk(
   "auth/updateUserInfo",
   async (user, thunkAPI) => {
@@ -61,6 +60,7 @@ export const updateUserInfo = createAsyncThunk(
   }
 );
 
+// Logout (clear user session)
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
