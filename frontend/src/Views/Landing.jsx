@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography, Button, Container } from "@mui/material";
-import landing from "../../Assets/landing.jpg";
+import landing from "../Assets/landing.jpg";
 
 export default function Landing() {
   return (

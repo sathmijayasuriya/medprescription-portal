@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Stack, AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import headerImage from "../../Assets/images/headerImage.png";
+import headerImage from '../../Assets/headerImage.png';
 import AddPrescription from "../../Views/User/components/AddPrescription";
 
-export default function HeaderAuthPharmacist() {
+export default function HeaderAuth() {
   const location = useLocation();
   const isInSignIn = location.pathname.includes("sign-in");
   return (

@@ -5,17 +5,19 @@ import { toast } from "react-toastify";
 import { reset } from "../Redux/features/auth/authSlice";
 
 import UserLayout from "../Layouts/UserLayout";
-import Landing from "../Views/User/Landing";
 import Myprescrptions from "../Views/User/Myprescrptions";
 import Login from "../Views/Auth/Login";
 import Register from "../Views/Auth/Register";
 import PharmacistLayout from "../Layouts/PharmacistLayout";
 import Dashboard from './../Views/Pharmacy/Dashboard';
+import MainLayout from "../Layouts/MainLayout";
+import UserDashboard from "../Views/User/UserDashboard";
+import Landing from "../Views/Landing";
 
 const privateRouter = createBrowserRouter([  //all users
     {
       path: "/",
-      element: <UserLayout />,
+      element: <MainLayout/>,    //parent component
       children: [
         {
           path: "/",
@@ -37,6 +39,10 @@ const authRouter = createBrowserRouter([  // login users
     path: "/user",
     element: <UserLayout />,
     children: [
+        {
+            path: "/user",
+            element: <UserDashboard/>,
+          },
       {
         path: "/user/my-prescriptions",
         element: <Myprescrptions />,
@@ -48,7 +54,7 @@ const authRouter = createBrowserRouter([  // login users
     element: <PharmacistLayout />,
     children: [
       {
-        path: "/pharmacy/dashboard",
+        path: "/pharmacy",
         element: <Dashboard />,
       },
     ],
@@ -63,7 +69,7 @@ const Router = () => {
       if (isError) {
         toast.error("Oops! Login failed, try again");
       }
-  
+
       dispatch(reset());
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isError]);
