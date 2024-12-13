@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Card,
@@ -9,14 +9,15 @@ import {
   Typography,
   Grid,
   Stack,
+  Link
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../Redux/features/auth/authSlice";
+import { registerPharmacist } from "../../Redux/features/auth/authSlice";
 
-const Register = () => {
+const RegisterPharmacist = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -25,6 +26,7 @@ const Register = () => {
     confirmPassword: "",
     dob: "",
     address: "",
+    pharmacyName: "",  
   });
 
   const [errors, setErrors] = useState({});
@@ -42,19 +44,19 @@ const Register = () => {
     e.preventDefault();
     const validationErrors = validate(formData);
     if (Object.keys(validationErrors).length === 0) {
-      // Register user
+      // Register pharmacist
       const payload = {
-        name: formData.fullName,
-        email: formData.email,
-        password: formData.password,
-        address: formData.address,
-        contactNo: formData.phoneNumber,
-        dob: formData.dob,
-        userType: "User",   
-    }
-      dispatch(registerUser(payload));
+          name: formData.fullName,
+          email: formData.email,
+          password: formData.password,
+          address: formData.address,
+          contactNo: formData.phoneNumber,
+          dob: formData.dob,
+          userType: "Pharmacy",   
+      }
+      dispatch(registerPharmacist(payload));
       console.log("Form submitted successfully!");
-      navigate("/auth/sign-in"); // Redirect to sign-in page after success
+      navigate("/pharmacy"); // Redirect to pharmacist dashboard after success
     } else {
       setErrors(validationErrors);
     }
@@ -78,6 +80,9 @@ const Register = () => {
     }
     if (!data.address.trim()) {
       errors.address = "Address is required";
+    }
+    if (!data.pharmacyName.trim()) {
+      errors.pharmacyName = "Pharmacy Name is required";
     }
     if (!data.password.trim()) {
       errors.password = "Password is required";
@@ -114,7 +119,7 @@ const Register = () => {
             component="div"
             sx={{ textAlign: "center", mb: 3 }}
           >
-            Sign up
+            Pharmacist Sign up
           </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
@@ -184,6 +189,18 @@ const Register = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  label="Pharmacy Name"
+                  variant="outlined"
+                  fullWidth
+                  name="pharmacyName"
+                  value={formData.pharmacyName}
+                  onChange={handleChange}
+                  error={!!errors.pharmacyName}
+                  helperText={errors.pharmacyName}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
                   label="Password"
                   type="password"
                   variant="outlined"
@@ -229,29 +246,10 @@ const Register = () => {
               </Button>
             </Stack>
           </form>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-            mt={2}
-          >
-            <Typography variant="body2" sx={{ textAlign: "center" }}>
-              Already have an account?
-            </Typography>
-            <Typography
-              component={Link}
-              to={"/auth/sign-in"}
-              variant="body2"
-              sx={{ textAlign: "center", textDecoration: "none" }}
-            >
-              Sign In
-            </Typography>
-          </Stack>
         </CardContent>
       </Card>
     </Container>
   );
 };
 
-export default Register;
+export default RegisterPharmacist;

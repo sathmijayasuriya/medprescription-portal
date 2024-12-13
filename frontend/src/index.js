@@ -3,15 +3,21 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
-import routes from "./Routes/routes";
-import { RouterProvider } from "react-router-dom";
 import Router from "./Routes/routes";
+import { ThemeProvider } from "@mui/material";
+import Theme from "./Theme/Theme";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Router />
-    </Provider>
+    <ToastContainer />
+    <ThemeProvider theme={Theme}>
+        <Provider store={store}>
+          <Router />
+        </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );

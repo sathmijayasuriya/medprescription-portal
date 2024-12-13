@@ -17,7 +17,7 @@ export default function HeaderPharmacist() {
       >
         <Toolbar>
           <Box component={Link} to={"/"}>
-            <img alt="Logo" src={headerImage} height={32} />
+            <img alt="Logo" src={headerImage} height={20} />
           </Box>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
 

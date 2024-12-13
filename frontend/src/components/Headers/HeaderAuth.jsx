@@ -1,12 +1,18 @@
 import React from "react";
 import { Box, Stack, AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import headerImage from '../../Assets/headerImage.png';
+import headerImage from "../../Assets/headerImage.png";
 import AddPrescription from "../../Views/User/components/AddPrescription";
+import { useNavigate } from "react-router-dom";
 
 export default function HeaderAuth() {
   const location = useLocation();
   const isInSignIn = location.pathname.includes("sign-in");
+  const navigate = useNavigate();
+
+  const handleClickOpen = () => {
+    navigate("/auth/sign-in");
+  };
   return (
     <>
       <AppBar
@@ -19,7 +25,7 @@ export default function HeaderAuth() {
       >
         <Toolbar>
           <Box component={Link} to={"/"} paddingX={2}>
-            <img alt="Logo" src={headerImage} height={32} />
+            <img alt="Logo" src={headerImage} height={20} />
           </Box>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
           <Stack
@@ -31,11 +37,17 @@ export default function HeaderAuth() {
             <Button
               variant="contained"
               component={Link}
-              to={isInSignIn ? "/auth/sign-up" : "/auth/sign-in"}
+              to={isInSignIn ? "/auth/register" : "/auth/sign-in"}
             >
               {isInSignIn ? "Sign Up" : "Sign In"}
             </Button>
-            <AddPrescription />
+            <Button
+              onClick={handleClickOpen}
+              variant="outlined"
+              component={Link}
+            >
+              Add prescription
+            </Button>
           </Stack>
         </Toolbar>
       </AppBar>

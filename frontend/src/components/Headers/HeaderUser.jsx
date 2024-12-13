@@ -5,7 +5,7 @@ import headerImage from '../../Assets/headerImage.png';
 import AccountMenu from "../Menus/AccountMenu";
 import AddPrescription from "../../Views/User/components/AddPrescription";
 
-export default function HeaderMain() {
+export default function HeaderUser() {
   return (
     <>
       <AppBar
@@ -18,7 +18,7 @@ export default function HeaderMain() {
       >
         <Toolbar>
           <Box component={Link} to={"/"}>
-            <img alt="Logo" src={headerImage} height={32} />
+            <img alt="Logo" src={headerImage} height={20} />
           </Box>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
 

@@ -8,18 +8,20 @@ import {
   Container,
   Stack,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";  // Import useNavigate for redirection
 import { isValidLogin } from "../../utils/validate";
 import { useDispatch } from "react-redux";
 import { login } from "../../Redux/features/auth/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();  // Hook to navigate to different routes
   const [error, setError] = React.useState({});
   const [payload, setPayload] = React.useState({
     email: "",
     password: "",
   });
+
   const onChangeInput = (e) => {
     setError({ ...error, [e.target.name]: false });
     setPayload({
@@ -27,37 +29,33 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   const onClickLogin = (e) => {
     e.preventDefault();
     if (!isValidLogin(payload, error, setError)) {
       return;
     } else {
-      dispatch(login(payload));
+      dispatch(login(payload)).then((response) => {
+        // Check the userType in the response to determine the route
+        const userType = response.payload.userType;  // Assuming userType is in response payload
+
+        // Redirect based on userType
+        if (userType === "Pharmacy") {
+          navigate("/pharmacy");  // Redirect to Pharmacy Dashboard
+        } else {
+          navigate("/user");  // Redirect to User Dashboard
+        }
+      }).catch((error) => {
+        console.error("Login failed:", error);
+      });
     }
   };
+
   return (
-    <Container sx={{alignItems:"center",
-                    display:"flex",
-                    // backgroundColor:"red",
-                    minHeight: "90vh",
-
-                    }}>
-      <Card sx={{ maxWidth: 400,
-                  mx: "auto",
-                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                  backdropFilter: "blur(10px)", // Blur effect
-                //   backgroundColor: "rgba(255, 255, 255, 0.4 )",
-                borderColor: "#b4b4b4",
-                borderWidth:1,
-                borderStyle: "solid", 
-
-                }}>
-        <CardContent sx={{mx:3,my:3}}>
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{ textAlign: "center", mb: 2 }}
-          >
+    <Container sx={{ alignItems: "center", display: "flex", minHeight: "90vh" }}>
+      <Card sx={{ maxWidth: 400, mx: "auto", boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)" }}>
+        <CardContent sx={{ mx: 3, my: 3 }}>
+          <Typography variant="h5" component="div" sx={{ textAlign: "center", mb: 2 }}>
             Welcome back
           </Typography>
           <Typography variant="subtitle1" sx={{ textAlign: "center", mb: 2 }}>

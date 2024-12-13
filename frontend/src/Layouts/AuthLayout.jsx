@@ -1,16 +1,16 @@
 import React from "react";
 import { Box, CssBaseline, Grid2 } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import HeaderMain from "../components/Headers/HeaderMain";
+import HeaderAuth from "../components/Headers/HeaderAuth";
 import Footer from "../components/Footers/Footer";
 
-export default function MainLayout() {
+export default function AuthLayout() {
   return (
     <>
       <CssBaseline />
-      {/* <HeaderMain /> */}
+      <HeaderAuth />
       <Grid2
-        // container
+        container
         direction="row"
         justifyContent="center"
         alignItems="stretch"

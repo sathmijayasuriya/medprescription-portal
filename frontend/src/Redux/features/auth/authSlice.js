@@ -8,14 +8,15 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
+  role:"User"
 };
 
 // User Login
 export const login = createAsyncThunk(
   "auth/login",
-  async ({ email, password, userType }, thunkAPI) => {
+  async ({ email, password }, thunkAPI) => {
     try {
-      return await authService.login({ email, password }, userType);
+      return await authService.login({ email, password });
     } catch (error) {
       const message =
         (error.response && error.response.data && error.response.data.message) ||
@@ -82,11 +83,13 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
+        state.role = action.payload.userType;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+        console.log("User Logged In: ", action.payload);
       })
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;

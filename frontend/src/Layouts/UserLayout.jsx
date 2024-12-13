@@ -2,13 +2,12 @@ import React from 'react'
 import { Box, CssBaseline, Grid2 } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Footer from '../components/Footers/Footer';
-import HeaderAuth from '../components/Headers/HeaderAuth';
-
+import HeaderUser from '../components/Headers/HeaderUser';
 export default function UserLayout() {
   return (
     <>
  <CssBaseline />
-      {/* <HeaderMain /> */}
+      <HeaderUser />
       <Grid2
         // container
         direction="row"

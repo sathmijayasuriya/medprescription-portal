@@ -2,20 +2,24 @@ import axios from "axios";
 import { Configuration } from "../Configuration";
 
 // Sign In (User or Pharmacist)
-export const signIn = async (payload, userType) => {
+export const signIn = async (payload) => {
   try {
-    const apiEndpoint =
-      userType === "pharmacy"
-        ? `${Configuration.BASE_URL}${Configuration.ADMIN_LOGIN}`
-        : `${Configuration.BASE_URL}${Configuration.USER_LOGIN}`;
-    const response = await axios.post(apiEndpoint, payload);
-
-    return response.data; // Expecting { id, name, email, user_type, token, ... }
+    const apiEndpoint = `${Configuration.BASE_URL}${Configuration.USER_LOGIN}`;
+      // userType === "Pharmacy"
+      //   ? `${Configuration.BASE_URL}${Configuration.ADMIN_LOGIN}`
+      //   : `${Configuration.BASE_URL}${Configuration.USER_LOGIN}`;
+    const response = await axios.post(apiEndpoint, {
+      email: payload.email,
+      password: payload.password, // Ensure payload structure matches backend
+    });
+    // const responseWithRole = {...response.data, role:userType}
+    return response.data;
   } catch (error) {
     console.error("Error during sign-in:", error.message);
     throw error;
   }
 };
+
 
 // User Sign Up
 export const signUpUser = async (payload) => {

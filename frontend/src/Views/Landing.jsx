@@ -15,7 +15,7 @@ export default function Landing() {
         backgroundImage: `url(${landing})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor:"red",
+        // backgroundColor:"red",
         position: "relative", 
       }}
     >
@@ -41,7 +41,6 @@ export default function Landing() {
         </Typography>
         <Button
           variant="contained"
-          color="success"
           sx={{
             fontSize: "16px",
             fontWeight: "bold",

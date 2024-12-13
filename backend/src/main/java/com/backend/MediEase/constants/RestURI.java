@@ -25,7 +25,4 @@ public class RestURI {
     public static final String GET_QUOTATIONS_BY_PID = "/getUserQuotations/{userId}";
     public static final String PERFORM_ACTION_QUOTATION = "/performActionOnQuotation";
 
-
-
-
 }

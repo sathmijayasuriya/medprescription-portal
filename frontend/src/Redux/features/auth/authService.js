@@ -1,8 +1,8 @@
 import { signIn, signUpUser, signUpPharmacist } from "../../../services/AuthService";
 
 // Login User or Pharmacist
-const login = async (payload, userType) => {
-  const user = await signIn(payload, userType);
+const login = async (payload) => {
+  const user = await signIn(payload);
 
   // Save user details to localStorage
   localStorage.setItem("user", JSON.stringify(user));
