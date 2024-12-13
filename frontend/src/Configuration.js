@@ -1,4 +1,4 @@
 
 export const Configuration = {
-    BASE_URL : "http://localhost:9998/",
+    BASE_URL : "http://localhost:8080/api",
 }

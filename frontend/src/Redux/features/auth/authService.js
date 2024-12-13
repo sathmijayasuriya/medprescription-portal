@@ -1,44 +1,41 @@
-import { signIn, signUp } from "../../../services/AuthService";
+import { signIn, signUpUser, signUpPharmacist } from "../../../services/AuthService";
 
-// Register user
-const register = async (payload) => {
-  const user = await signUp(payload);
-  localStorage.setItem("user", JSON.stringify(user));
+// Login User or Pharmacist
+const login = async (payload, userType) => {
+  const user = await signIn(payload, userType);
 
-  return user;
-};
-
-// Login user
-const login = async (payload) => {
-  const user = await signIn(payload);
+  // Save user details to localStorage
   localStorage.setItem("user", JSON.stringify(user));
   return user;
 };
 
-const updateUserInfo = async (payload) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+// Register User
+const registerUser = async (payload) => {
+  const user = await signUpUser(payload);
 
-  Object.keys(payload).forEach((key) => {
-    const uppercaseKey = key.toUpperCase();
-    if (user.hasOwnProperty(uppercaseKey)) {
-      user[uppercaseKey] = payload[key];
-    }
-  });
+  // Save user details to localStorage
   localStorage.setItem("user", JSON.stringify(user));
-
   return user;
 };
 
-// Logout user
+// Register Pharmacist (only from the Pharmacist Dashboard)
+const registerPharmacist = async (payload) => {
+  const pharmacist = await signUpPharmacist(payload);
+
+  // Optionally store pharmacist data locally if needed
+  return pharmacist;
+};
+
+// Logout
 const logout = () => {
   localStorage.removeItem("user");
 };
 
 const authService = {
-  register,
-  logout,
   login,
-  updateUserInfo,
+  registerUser,
+  registerPharmacist,
+  logout,
 };
 
 export default authService;

@@ -36,9 +36,23 @@ const Login = () => {
     }
   };
   return (
-    <Container>
-      <Card sx={{ maxWidth: 400, mx: "auto", mt: 5 }}>
-        <CardContent>
+    <Container sx={{alignItems:"center",
+                    display:"flex",
+                    // backgroundColor:"red",
+                    minHeight: "90vh",
+
+                    }}>
+      <Card sx={{ maxWidth: 400,
+                  mx: "auto",
+                  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                  backdropFilter: "blur(10px)", // Blur effect
+                //   backgroundColor: "rgba(255, 255, 255, 0.4 )",
+                borderColor: "#b4b4b4",
+                borderWidth:1,
+                borderStyle: "solid", 
+
+                }}>
+        <CardContent sx={{mx:3,my:3}}>
           <Typography
             variant="h5"
             component="div"
@@ -90,7 +104,7 @@ const Login = () => {
             </Typography>
             <Typography
               component={Link}
-              to={"/auth/sign-up"}
+              to={"/auth/register"}
               variant="body2"
               sx={{ textAlign: "center", textDecoration: "none" }}
             >

@@ -13,6 +13,7 @@ import { logout } from "../../Redux/features/auth/authSlice";
 
 export default function AccountMenu() {
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const onClickLogOut = (e) => {
     e.preventDefault();
@@ -86,7 +87,7 @@ export default function AccountMenu() {
         <MenuItem component={Link} to={"/"}>
           Home
         </MenuItem>
-        <MenuItem component={Link} to={"/review/my-reviews"}>
+        <MenuItem component={Link} to={"/prescriptions/my-prescriptions"}>
           My Prescriptions
         </MenuItem>
         <MenuItem onClick={handleClose}>Account</MenuItem>

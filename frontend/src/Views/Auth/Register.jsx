@@ -11,7 +11,7 @@ import {
   Stack,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { register } from "../../Redux/features/auth/authSlice";
+import { registerPharmacist } from "../../Redux/features/auth/authSlice";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Register = () => {
     e.preventDefault();
     const validationErrors = validate(formData);
     if (Object.keys(validationErrors).length === 0) {
-      dispatch(register(formData));
+      dispatch(registerPharmacist(formData));
       console.log("Form submitted successfully!");
     } else {
       setErrors(validationErrors);
@@ -68,9 +68,25 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <Card sx={{ maxWidth: 500, mx: "auto", mt: 5 }}>
-        <CardContent>
+    <Container
+      sx={{
+        alignItems: "center",
+        display: "flex",
+        // backgroundColor:"red",
+        minHeight: "90vh",
+      }}
+    >
+      <Card
+        sx={{
+          maxWidth: 500,
+          mx: "auto",
+          mt: 5,
+          borderColor: "#b4b4b4",
+          borderWidth: 1,
+          borderStyle: "solid", // Border style
+        }}
+      >
+        <CardContent sx={{ mx: 3, my: 3 }}>
           <Typography
             variant="h5"
             component="div"
