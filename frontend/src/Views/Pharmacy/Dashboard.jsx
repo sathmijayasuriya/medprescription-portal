@@ -138,14 +138,17 @@ const Dashboard = () => {
                     View Quotation
                   </Button>
                   <Button
-  variant="contained"
-  color="secondary"
-  size="small"
-  onClick={() => alert(`Sending quotation for prescription ID: ${prescription.id}`)}
->
-  Send Quotation
-</Button>
-
+                    variant="contained"
+                    color="secondary"
+                    size="small"
+                    onClick={() =>
+                      alert(
+                        `Sending quotation for prescription ID: ${prescription.id}`
+                      )
+                    }
+                  >
+                    Send Quotation
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -155,7 +158,12 @@ const Dashboard = () => {
 
       {/* Prescription Details Modal */}
       {selectedPrescription && (
-        <Dialog open={!!selectedPrescription} onClose={handleClose} fullWidth maxWidth="sm">
+        <Dialog
+          open={!!selectedPrescription}
+          onClose={handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
           <DialogTitle>Prescription Details</DialogTitle>
           <DialogContent>
             <TextField
@@ -192,20 +200,28 @@ const Dashboard = () => {
             <Grid container spacing={2}>
               {selectedPrescription.images.map((image, index) => (
                 <Grid item xs={4} key={index}>
-<img
-  src={image}
-  alt={`Prescription ${index + 1}`}
-  style={{ width: "100%" }}
-/>
+                  <img
+                    src={image}
+                    alt={`Prescription ${index + 1}`}
+                    style={{ width: "100%" }}
+                  />
                 </Grid>
               ))}
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleKeepPending} variant="outlined" color="primary">
+            <Button
+              onClick={handleKeepPending}
+              variant="outlined"
+              color="primary"
+            >
               Keep Pending and Exit
             </Button>
-            <Button onClick={handleSetAsViewed} variant="contained" color="secondary">
+            <Button
+              onClick={handleSetAsViewed}
+              variant="contained"
+              color="secondary"
+            >
               Set as Viewed and Continue
             </Button>
           </DialogActions>
@@ -214,8 +230,15 @@ const Dashboard = () => {
 
       {/* Quotation Popup */}
       {showQuotation && selectedPrescription && (
-        <Dialog open={showQuotation} onClose={handleCloseQuotation} fullWidth maxWidth="sm">
-          <DialogTitle>Quotation for Prescription {selectedPrescription.id}</DialogTitle>
+        <Dialog
+          open={showQuotation}
+          onClose={handleCloseQuotation}
+          fullWidth
+          maxWidth="sm"
+        >
+          <DialogTitle>
+            Quotation for Prescription {selectedPrescription.id}
+          </DialogTitle>
           <DialogContent>
             <TableContainer component={Paper}>
               <Table>
@@ -252,7 +275,11 @@ const Dashboard = () => {
             </TableContainer>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseQuotation} variant="contained" color="primary">
+            <Button
+              onClick={handleCloseQuotation}
+              variant="contained"
+              color="primary"
+            >
               Close
             </Button>
           </DialogActions>

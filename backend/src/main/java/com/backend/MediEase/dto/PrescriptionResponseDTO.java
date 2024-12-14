@@ -17,5 +17,8 @@ public class PrescriptionResponseDTO {
     private String note;
     private String deliveryAddress;
     private String status;
+
+    //Return Base64-Encoded Images in DTO
+    // need to implement this, otherwise images will not be diplay
     private List<String> imagePaths; // Return image paths to the client
 }
