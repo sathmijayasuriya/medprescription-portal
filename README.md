@@ -44,7 +44,12 @@ This project is a **Spring Boot** backend application for managing prescriptions
 4. Access the application:
    - Base URL: `http://localhost:8080/api`
 
-5. Test the API using Postman or any REST client.
+5. user login
+   - email -> user12@example.com
+   - password -> user12
+6. pharmacist login
+   - email -> admin@example.com
+   - password -> password123 
 
 ---
 
