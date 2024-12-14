@@ -23,7 +23,7 @@ export const isValidLogin = (payload, error, setError) => {
     tempErrors.password = "Please enter your password";
     isValid = false;
   } else if (!passwordRegex.test(payload.password)) {
-    tempErrors.password = "Password must be at least 6 characters";
+    tempErrors.password = "Password must be at least 2 characters";
     isValid = false;
   }
   setError({

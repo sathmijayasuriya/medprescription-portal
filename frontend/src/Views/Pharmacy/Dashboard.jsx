@@ -139,7 +139,6 @@ const Dashboard = () => {
                   </Button>
                   <Button
                     variant="contained"
-                    color="secondary"
                     size="small"
                     onClick={() =>
                       alert(
@@ -228,7 +227,7 @@ const Dashboard = () => {
         </Dialog>
       )}
 
-      {/* Quotation Popup */}
+      {/* Quotation Popup
       {showQuotation && selectedPrescription && (
         <Dialog
           open={showQuotation}
@@ -284,7 +283,7 @@ const Dashboard = () => {
             </Button>
           </DialogActions>
         </Dialog>
-      )}
+      )} */}
     </Container>
   );
 };
