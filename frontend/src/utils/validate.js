@@ -1,6 +1,6 @@
 const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,100}$/;
 
-const passwordRegex = /^.{6,}$/;
+const passwordRegex = /^.{2,}$/;
 
 // const nameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{2,100}$/;
 

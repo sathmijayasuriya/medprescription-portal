@@ -38,10 +38,11 @@ const Login = () => {
 
     
     if (!isValidLogin(payload, error, setError)) {
+      console.log("invalid");
       return;
     } else {
       dispatch(login(payload)).then((response) => {
-          console.log("responnse from login ",response)
+          console.log("response from login ",response)
         const userType = response.payload.userType;  // Assuming userType is in response payload
 
         // Redirect based on userType
@@ -82,8 +83,8 @@ const Login = () => {
             variant="outlined"
             fullWidth
             name="password"
-            // error={error.password}
-            // helperText={error.password ? error.password : " "}
+            error={error.password}
+            helperText={error.password ? error.password : " "}
             onChange={(e) => onChangeInput(e)}
             sx={{ mb: 2 }}
           />

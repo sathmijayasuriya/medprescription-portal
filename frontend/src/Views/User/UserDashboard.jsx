@@ -187,27 +187,34 @@ const UserDashboard = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Prescription ID</TableCell>
-              <TableCell>Address</TableCell>
+              <TableCell>Prescription</TableCell>
+              <TableCell>Date</TableCell>
               <TableCell>Note</TableCell>
+              <TableCell>Address</TableCell>
               <TableCell>Status</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {prescriptions.map((prescription) => (
               <TableRow key={prescription.prescriptionId}>
                 <TableCell>{prescription.prescriptionId}</TableCell>
-                <TableCell>{prescription.deliveryAddress}</TableCell>
+                <TableCell>{prescription.date}</TableCell>
                 <TableCell>{prescription.note}</TableCell>
+                <TableCell>{prescription.deliveryAddress}</TableCell>
                 <TableCell>
                   <Chip
                     label={prescription.status}
-                    color={prescription.status === "Pending" ? "warning" : "success"}
+                    color={
+                      prescription.status === "Pending" ? "warning" : "success"
+                    }
                   />
                 </TableCell>
                 <TableCell>
-                  <IconButton color="primary" onClick={() => handleView(prescription)}>
+                  <IconButton
+                    color="primary"
+                    onClick={() => handleView(prescription)}
+                  >
                     <VisibilityIcon />
                   </IconButton>
                   <IconButton color="error">

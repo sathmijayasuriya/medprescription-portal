@@ -35,11 +35,17 @@ const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
+  //image url
+    // Helper to generate full image URLs
+    const getImageUrl = (path) => {
+      const BASE_URL = "http://localhost:8080"; // Replace with your backend URL
+      return `${BASE_URL}${path.replace(/^\.\\/, "/")}`; // Replace `.\` with `/` for proper pathing
+    };
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
       <DialogTitle>
-        {`Prescription ${prescriptionData.id}`}
+        {`Prescription ${prescriptionData.prescriptionId}`}
         <IconButton
           aria-label="close"
           onClick={onClose}
@@ -54,45 +60,44 @@ const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
           <Tab label="Basic Information" />
           <Tab label="Quotations" />
         </Tabs>
-
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <Typography variant="h6">Images</Typography>
-              <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-                {[...Array(5)].map((_, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      width: 100,
-                      height: 100,
-                      border: "1px solid #ccc",
-                      borderRadius: 2,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography>Image {index + 1}</Typography>
-                  </Box>
-                ))}
+              <Box sx={{ display: "flex", gap: 2, mt: 2, flexWrap: "wrap" }}>
+                {prescriptionData.imagePaths && prescriptionData.imagePaths.length > 0 ? (
+                  prescriptionData.imagePaths.map((path, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        width: 100,
+                        height: 100,
+                        border: "1px solid #ccc",
+                        borderRadius: 2,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <img
+                        src={getImageUrl(path)}
+                        alt={`Prescription Image ${index + 1}`}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </Box>
+                  ))
+                ) : (
+                  <Typography>No images available.</Typography>
+                )}
               </Box>
-              
             </Grid>
 
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Date"
-                value={prescriptionData.date}
-                InputProps={{ readOnly: true }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
                 label="Address"
-                value={prescriptionData.address}
+                value={prescriptionData.deliveryAddress}
                 InputProps={{ readOnly: true }}
               />
             </Grid>
@@ -100,7 +105,7 @@ const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
               <TextField
                 fullWidth
                 label="Notes"
-                value={prescriptionData.notes}
+                value={prescriptionData.note}
                 InputProps={{ readOnly: true }}
               />
             </Grid>
