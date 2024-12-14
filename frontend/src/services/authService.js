@@ -10,9 +10,10 @@ export const signIn = async (payload) => {
       //   : `${Configuration.BASE_URL}${Configuration.USER_LOGIN}`;
     const response = await axios.post(apiEndpoint, {
       email: payload.email,
-      password: payload.password, // Ensure payload structure matches backend
+      password: payload.password, 
     });
     // const responseWithRole = {...response.data, role:userType}
+    console.log("api response",response)
     return response.data;
   } catch (error) {
     console.error("Error during sign-in:", error.message);
@@ -59,3 +60,4 @@ export const LogOut = async () => {
     return { isSuccess: false, error };
   }
 };
+  

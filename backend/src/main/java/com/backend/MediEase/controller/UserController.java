@@ -27,7 +27,9 @@ public class UserController {
     @PostMapping(RestURI.USER_REGISTER)
     public ResponseEntity<UserResponseDTO> registerUser(@RequestBody UserReqRegisterDTO dto) {
         dto.setUserType("User");
+        System.out.println("request login "+dto.getName()+dto.getEmail());
         Optional<UserResponseDTO> response = authService.registerUser(dto);
+        System.out.println("response : "+response);
         return response.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(400).body(null)); // 400 if registration fails
     }
@@ -47,7 +49,7 @@ public class UserController {
         return response.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(401).body(null));
     }
-    // Login Pharmacist
+//     Login Pharmacist
     @PostMapping(RestURI.ADMIN_LOGIN)
     public ResponseEntity<UserResponseDTO> loginPharmacy(@RequestBody UserReqLoginDTO dto) {
         Optional<UserResponseDTO> response = authService.loginUser(dto);

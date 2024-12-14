@@ -70,6 +70,13 @@ public class PrescriptionServiceImpl implements PrescriptionService{
                 .map(this::convertToResponseDTO)
                 .collect(Collectors.toList());
     }
+    //get by user id
+    public List<PrescriptionResponseDTO> getPrescriptionsByUser(Long userId) {
+        return prescriptionDAO.getPrescriptionsByUser(userId).stream()
+                .map(this::convertToResponseDTO)
+                .collect(Collectors.toList());
+    }
+
     private PrescriptionResponseDTO convertToResponseDTO(Prescription prescription) {
         PrescriptionResponseDTO responseDTO = new PrescriptionResponseDTO();
         responseDTO.setPrescriptionId(prescription.getPrescriptionId());

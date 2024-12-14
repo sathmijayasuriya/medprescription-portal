@@ -23,20 +23,25 @@ const Login = () => {
   });
 
   const onChangeInput = (e) => {
+    console.log("Input Changed:", e.target.name, e.target.value); 
     setError({ ...error, [e.target.name]: false });
     setPayload({
       ...payload,
       [e.target.name]: e.target.value,
     });
   };
+  
 
   const onClickLogin = (e) => {
     e.preventDefault();
+    console.log("Login button clicked");
+
+    
     if (!isValidLogin(payload, error, setError)) {
       return;
     } else {
       dispatch(login(payload)).then((response) => {
-        // Check the userType in the response to determine the route
+          console.log("responnse from login ",response)
         const userType = response.payload.userType;  // Assuming userType is in response payload
 
         // Redirect based on userType
@@ -77,8 +82,8 @@ const Login = () => {
             variant="outlined"
             fullWidth
             name="password"
-            error={error.password}
-            helperText={error.password ? error.password : " "}
+            // error={error.password}
+            // helperText={error.password ? error.password : " "}
             onChange={(e) => onChangeInput(e)}
             sx={{ mb: 2 }}
           />

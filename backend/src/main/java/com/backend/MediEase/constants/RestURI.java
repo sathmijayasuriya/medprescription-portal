@@ -17,6 +17,7 @@ public class RestURI {
     //prescription
     public static final String ADD_PRESCRIPTION = "/prescriptions/addPrescription";
     public static final String GET_ALL_PRESCRIPTIONS = "/prescriptions/getAllPrescriptions";
+    public static final String GET_PRESCRIPTIONS_BY_USER = "/prescriptions/by-user/{userId}";
 
     //Quotation
     public static final String CREATE_QUOTATION = "/createQuotation";

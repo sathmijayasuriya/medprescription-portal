@@ -9,6 +9,7 @@ import java.util.List;
 public interface PrescriptionService {
 
         void addPrescription(Long userId, String note, String deliveryAddress, List<MultipartFile> imagePaths) ;
+         List<PrescriptionResponseDTO> getPrescriptionsByUser(Long userId) ;
 
         List<PrescriptionResponseDTO> getAllPrescriptions() ;
 

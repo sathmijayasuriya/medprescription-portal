@@ -2,11 +2,15 @@ import { signIn, signUpUser, signUpPharmacist } from "../../../services/AuthServ
 
 // Login User or Pharmacist
 const login = async (payload) => {
+  try{
   const user = await signIn(payload);
-
-  // Save user details to localStorage
+  console.log("User data from API:", user);
   localStorage.setItem("user", JSON.stringify(user));
   return user;
+}catch (error) {
+  console.error("Error during sign-in:", error.response ? error.response.data : error.message);
+  throw error;  // Ensure the error propagates correctly
+}
 };
 
 // Register User

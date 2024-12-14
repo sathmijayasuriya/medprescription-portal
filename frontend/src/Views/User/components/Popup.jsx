@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogTitle,
@@ -6,12 +6,12 @@ import {
   DialogActions,
   Button,
   Tabs,
+  IconButton,
   Tab,
   Box,
   Typography,
   TextField,
   Grid,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -19,7 +19,6 @@ import {
   TableRow,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 
 // Tab Panel component
 const TabPanel = ({ children, value, index }) => {
@@ -31,7 +30,7 @@ const TabPanel = ({ children, value, index }) => {
 };
 
 const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
-  const [tabValue, setTabValue] = useState(0);
+  const [tabValue, setTabValue] = React.useState(0);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -78,6 +77,7 @@ const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
                   </Box>
                 ))}
               </Box>
+              
             </Grid>
 
             <Grid item xs={12}>
@@ -155,29 +155,4 @@ const PrescriptionModal = ({ open, onClose, prescriptionData }) => {
   );
 };
 
-const Popup = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const prescriptionData = {
-    id: 1234,
-    date: "11/12/2024",
-    address: "7C, Sambuddhi Lane, Kottawa",
-    notes: "SPC Medicine only",
-  };
-
-  return (
-    <div>
-      <IconButton onClick={() => setModalOpen(true)}>
-        <VisibilityIcon />
-      </IconButton>
-
-      <PrescriptionModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        prescriptionData={prescriptionData}
-      />
-    </div>
-  );
-};
-
-export default Popup;
+export default PrescriptionModal;

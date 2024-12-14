@@ -37,6 +37,14 @@ public class PrescriptionDAOImpl implements PrescriptionDAO {
         String sql = "SELECT * FROM Prescriptions";
         return jdbcTemplate.query(sql, this::mapRowToPrescription);
     }
+
+    @Override
+    public List<Prescription> getPrescriptionsByUser(Long userId) {
+        String sql = "SELECT * FROM Prescriptions WHERE user_id = ?";
+        return jdbcTemplate.query(sql, this::mapRowToPrescription, userId);
+    }
+
+
     private Prescription mapRowToPrescription(ResultSet rs, int rowNum) throws SQLException {
         Prescription prescription = new Prescription();
         prescription.setPrescriptionId(rs.getLong("prescription_id"));

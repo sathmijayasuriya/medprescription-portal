@@ -113,6 +113,9 @@ const Router = () => {
     dispatch(reset());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess]);
+  console.log("Current User:", user);
+  console.log("Current Role:", role);
+
 
   return user ? (
     role === "User" ?(

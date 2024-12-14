@@ -41,4 +41,11 @@ public class PrescriptionController {
     public ResponseEntity<List<PrescriptionResponseDTO>> getAllPrescriptions() {
         return ResponseEntity.ok(prescriptionService.getAllPrescriptions());
     }
+
+    //get by use id
+    @GetMapping(RestURI.GET_PRESCRIPTIONS_BY_USER)
+    public ResponseEntity<List<PrescriptionResponseDTO>> getPrescriptionsByUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(prescriptionService.getPrescriptionsByUser(userId));
+    }
+
 }

@@ -9,6 +9,7 @@ public interface PrescriptionDAO {
     Long addPrescription(Prescription prescription);
      void addPrescriptionImages(Long prescriptionId, List<String> imagePaths) ;
      List<Prescription> getAllPrescriptions() ;
+     List<Prescription> getPrescriptionsByUser(Long userId) ;
 
 
     }

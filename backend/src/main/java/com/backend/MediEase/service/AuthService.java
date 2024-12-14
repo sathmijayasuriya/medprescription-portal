@@ -25,6 +25,7 @@ public class AuthService {
     // Register user/pharmacist
     public Optional<UserResponseDTO> registerUser(UserReqRegisterDTO dto) {
         Optional<User> existingUser = authDAO.findByEmail(dto.getEmail());
+        System.out.println("service request :"+existingUser);
         if (existingUser.isPresent()) {
             return Optional.empty(); // Return empty if user already exists
         }
@@ -50,6 +51,7 @@ public class AuthService {
             response.setUserType(user.getUserType());
             return Optional.of(response);
         }
+        System.out.println("service response "+Optional.empty());
         return Optional.empty(); // Return empty if registration fails
     }
 

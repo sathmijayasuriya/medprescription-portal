@@ -11,7 +11,7 @@ const Footer = () => {
           justifyContent: "center", 
           display: "flex", 
           width: "100%",
-          paddingTop: 2,
+          paddingTop: 20,
         }}
       >
         <Box
