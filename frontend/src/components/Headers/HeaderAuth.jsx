@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Stack, AppBar, Toolbar, Typography, Button } from "@mui/material";
+import React, { useEffect } from "react";
+import { Box, Stack, AppBar, Toolbar, Typography, Button, useTheme, useScrollTrigger } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import headerImage from "../../Assets/headerImage.png";
 import AddPrescription from "../../Views/User/components/AddPrescription";
@@ -9,10 +9,10 @@ export default function HeaderAuth() {
   const location = useLocation();
   const isInSignIn = location.pathname.includes("sign-in");
   const navigate = useNavigate();
-
   const handleClickOpen = () => {
     navigate("/auth/sign-in");
   };
+  
   return (
     <>
       <AppBar
@@ -33,6 +33,7 @@ export default function HeaderAuth() {
             justifyContent="center"
             alignItems="center"
             columnGap={2}
+
           >
             <Button
               variant="contained"

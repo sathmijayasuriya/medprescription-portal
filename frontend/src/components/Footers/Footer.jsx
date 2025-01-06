@@ -2,8 +2,9 @@ import { Box, Toolbar } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import headerImage from '../../Assets/headerImage.png';
-
 const Footer = () => {
+
+
   return (
     <>
       <Toolbar

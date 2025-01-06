@@ -47,6 +47,7 @@ const UserDashboard = () => {
     }
   };
 
+  
   useEffect(() => {
     fetchPrescriptions();
   }, []);
@@ -81,7 +82,6 @@ const UserDashboard = () => {
       alert("You can upload a maximum of 5 images.");
       return;
     }
-
     setImages((prevImages) => [...prevImages, ...validFiles]);
   };
 
@@ -89,12 +89,12 @@ const UserDashboard = () => {
     setImages(images.filter((file) => file !== fileToRemove));
   };
 
+  // add data
   const handleSubmitPrescription = async () => {
     if (!address || !notes || images.length === 0) {
       alert("Please fill in the delivery address, notes, and upload at least one image.");
       return;
     }
-
     const formData = new FormData();
     formData.append("userId", user.userId);
     formData.append("note", notes);
@@ -103,7 +103,6 @@ const UserDashboard = () => {
     images.forEach((file) => {
       formData.append("imagePaths", file);
     });
-
     try {
       await axios.post(
         "http://localhost:8080/api/prescriptions/addPrescription",

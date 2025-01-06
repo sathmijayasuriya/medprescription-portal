@@ -2,7 +2,6 @@ package com.backend.MediEase.controller;
 
 
 import com.backend.MediEase.constants.RestURI;
-import com.backend.MediEase.dto.PrescriptionRequestDTO;
 import com.backend.MediEase.dto.PrescriptionResponseDTO;
 import com.backend.MediEase.service.PrescriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,9 @@ public class PrescriptionController {
 
         return ResponseEntity.ok("Prescription added successfully!");
     }
+
+    //
+
 
     @GetMapping(RestURI.GET_ALL_PRESCRIPTIONS)
     public ResponseEntity<List<PrescriptionResponseDTO>> getAllPrescriptions() {

@@ -1,9 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 
+
+//If a user logs in and the app is refreshed, fetching the user from localStorage
 const localStorageUser = JSON.parse(localStorage.getItem("user"));
+
+//initial state
 const initialState = {
-  user: localStorageUser || null,
+  user: localStorageUser || null,   //if the user on local storeage it will get user infor, otherwise null
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -62,8 +66,8 @@ export const registerPharmacist = createAsyncThunk(
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    reset: (state) => {
+  reducers: {     // regular reducers
+    reset: (state) => {  //Synchronous Actions (Reducers):
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
@@ -74,10 +78,10 @@ export const authSlice = createSlice({
       state.isSuccess = false;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: (builder) => {  //async actions
     builder
       .addCase(login.pending, (state) => {
-        state.isLoading = true;
+        state.isLoading = true; // When login starts, set isLoading to true
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -85,7 +89,7 @@ export const authSlice = createSlice({
         state.user = action.payload;
         state.role = action.payload.userType;
         console.log("Login fulfilled payload:", action.payload);
-
+        
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -121,5 +125,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { reset,logout } = authSlice.actions;
+export const { reset,logout } = authSlice.actions; // regular reducers
 export default authSlice.reducer;
