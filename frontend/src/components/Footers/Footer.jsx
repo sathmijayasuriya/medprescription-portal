@@ -15,12 +15,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 const Footer = () => {
   return (
     <>
-      <Box sx={{ backgroundColor: "white", py: 5 ,justifyContent:"center"}}>
+      <Box sx={{ backgroundColor: "white", py: 5  }}>
         <Container>
-          <Grid container spacing={7}>
+          <Grid container spacing={10}>
             {/* About Section */}
-            <Grid item xs={12} md={6} lg={4}>
-              <Box>
+            <Grid item xs={6 }>
+              <Box style ={{width:"70%"}}>
                 <Typography variant="h5" gutterBottom>
                   About <strong style={{ color: "#D66C95" }}>GUARDIAN</strong>
                 </Typography>
@@ -32,7 +32,7 @@ const Footer = () => {
             </Grid>
 
             {/* Navigation Section */}
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={3} >
               <Typography variant="h5" gutterBottom>
                 Navigation
               </Typography>
@@ -60,7 +60,7 @@ const Footer = () => {
             </Grid>
 
             {/* Contact Info Section */}
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={3} >
               <Typography variant="h5" gutterBottom>
                 Contact Info
               </Typography>
