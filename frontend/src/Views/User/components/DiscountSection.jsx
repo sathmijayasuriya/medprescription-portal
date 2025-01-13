@@ -13,11 +13,11 @@ export default function DiscountSection() {
         backgroundRepeat: "no-repeat",
         color: "black",
         py: 5,
-        webkitBackdropFilter:"blur(50px)",
-        backgroundColor: "rgba(228, 158, 196, 0.22)",
-        backdropFilter: "blur(10px)", // Blur effect
-        boxShadow: "0 4px 30px rgba(34, 33, 33, 0.03)", // Optional: Adds a subtle shadow for depth
-
+        // webkitBackdropFilter:"blur(50px)",
+        // backgroundColor: "rgba(228, 158, 196, 0.22)",
+        // backdropFilter: "blur(10px)", // Blur effect
+        boxShadow: "20px rgba(14, 11, 11, 0.03)", 
+        border: "1px solid rgba(247, 142, 182, 0.42)", // Optional
         
 
       }}
@@ -30,7 +30,7 @@ export default function DiscountSection() {
             </Typography>
             <Typography variant="body1" paragraph>
             Register today and enjoy exclusive discounts of up to 55% on your first prescription order, making healthcare more affordable.            </Typography>
-            <Button variant="outlined" color="inherit" href="#">
+            <Button variant="contained"  href="#">
               Sign up
             </Button>
           </Grid>
