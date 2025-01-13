@@ -7,3 +7,8 @@ export const store = configureStore({
     auth: authReducer,
   },
 });
+
+// empty store
+// export default configureStore({
+//   reducer : {}
+// })

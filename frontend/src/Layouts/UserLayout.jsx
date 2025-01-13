@@ -12,7 +12,7 @@ export default function UserLayout() {
         // container
         direction="row"
         justifyContent="center"
-        alignItems="stretch"
+        // alignItems="stretch"
         sx={{
           height: "100%",
           minHeight: "calc(100vh - 64px)",

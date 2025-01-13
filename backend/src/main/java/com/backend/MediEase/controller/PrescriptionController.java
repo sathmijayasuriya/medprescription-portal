@@ -36,7 +36,7 @@ public class PrescriptionController {
         return ResponseEntity.ok("Prescription added successfully!");
     }
 
-    //
+
 
 
     @GetMapping(RestURI.GET_ALL_PRESCRIPTIONS)

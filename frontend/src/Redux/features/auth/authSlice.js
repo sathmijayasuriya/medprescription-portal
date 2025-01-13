@@ -63,7 +63,9 @@ export const registerPharmacist = createAsyncThunk(
   }
 );
 
-export const authSlice = createSlice({
+  // authSlice is created using createSlice.
+  // The reducer part of the authSlice is exported as the default export
+export const authSlice = createSlice({   
   name: "auth",
   initialState,
   reducers: {     // regular reducers
@@ -125,5 +127,6 @@ export const authSlice = createSlice({
   },
 });
 
+// Action creators are generated for each case reducer function
 export const { reset,logout } = authSlice.actions; // regular reducers
 export default authSlice.reducer;

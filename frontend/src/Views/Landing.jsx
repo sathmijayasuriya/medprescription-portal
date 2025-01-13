@@ -1,7 +1,9 @@
 import React from 'react'
 import { Box, Typography, Button, Container } from "@mui/material";
 import landing from "../Assets/landing.jpg";
-
+import Features from './User/components/Features';
+import DiscountSection from './User/components/DiscountSection';
+import Feedbacks from './User/components/Feedbacks';
 export default function Landing() {
   return (
     <>
@@ -51,7 +53,9 @@ export default function Landing() {
         </Button>
       </Container>
     </Box>
-
+    <Features/>
+    <DiscountSection/>
+    <Feedbacks/>
     </>
   )
 }

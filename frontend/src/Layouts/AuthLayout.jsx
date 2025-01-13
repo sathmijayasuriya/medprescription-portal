@@ -10,7 +10,7 @@ export default function AuthLayout() {
       <CssBaseline />
       <HeaderAuth />
       <Grid2
-        container
+        // container
         direction="row"
         justifyContent="center"
         alignItems="stretch"

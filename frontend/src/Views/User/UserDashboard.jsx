@@ -47,7 +47,6 @@ const UserDashboard = () => {
     }
   };
 
-  
   useEffect(() => {
     fetchPrescriptions();
   }, []);

@@ -1,16 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
 const Theme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      xsm: 300,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
   palette: {
     primary: {
       main: "#D66C95",
@@ -40,23 +30,16 @@ const Theme = createTheme({
         },
       },
     },
-    // MuiPickersDay: {
-    //   styleOverrides: {
-    //     root: {
-    //       backgroundColor: "transparent", // Default background
-    //     },
-    //     today: {
-    //       border: `1px solid #D66C95`, // Highlight today's date
-    //     },
-    //     selected: {
-    //       backgroundColor: "#D66C95",
-    //       color: "#fff", // Ensure text is visible
-    //       "&:hover": {
-    //         backgroundColor: "#B35479", // Darker hover color
-    //       },
-    //     },
-    //   },
-    // },
+  },
+  // Custom global styles for Slider dots
+  overrides: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        ".slick-dots": {
+          marginTop: "20px", // Add margin to dots
+        },
+      },
+    },
   },
 });
 
