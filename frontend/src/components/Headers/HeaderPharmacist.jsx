@@ -3,6 +3,7 @@ import { Stack, AppBar, Toolbar, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import headerImage from '../../Assets/headerImage.png';
 import AccountMenu from "../Menus/AccountMenu";
+import AccountMenuPharmacy from '../Menus/AccountPharmacyMenus';
 
 export default function HeaderPharmacist() {
   return (
@@ -22,7 +23,7 @@ export default function HeaderPharmacist() {
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
 
           <Stack direction={"row"} justifyContent="center" alignItems="center">
-            <AccountMenu />
+            <AccountMenuPharmacy />
             {/* <AddPrescription/> */}
           </Stack>
         </Toolbar>

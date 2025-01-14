@@ -14,14 +14,19 @@ import AuthLayout from "../Layouts/AuthLayout";
 import UserDashboard from "../Views/User/UserDashboard";
 import Landing from "../Views/Landing";
 import RegisterPharmacist from "../Views/Auth/RegisterPharmacist";
+import MyAccount from "../Views/User/MyAccount";
 
-const authRouter = createBrowserRouter([
+const authRouter = createBrowserRouter([ //all users
   {
     path: "/",
     element: <AuthLayout />,
     children: [
       {
         path: "/",
+        element: <Landing />,
+      },
+      {
+        path: "/landing",
         element: <Landing />,
       },
       {
@@ -48,15 +53,23 @@ const userRouter = createBrowserRouter([  // logged-in users
     children: [
       {
         path: "/",
-        element: <UserDashboard />,
+        element: <Navigate to="/user" replace />, 
       },
       {
         path: "/user",
         element: <UserDashboard />,
       },
       {
+        path: "/user/account",
+        element: <MyAccount />,
+      },
+      {
         path: "/user/my-prescriptions",
         element: <Myprescrptions />,
+      },
+      {
+        path: "/landing",
+        element: <Landing />, 
       },
       {
         path: "*",
@@ -66,14 +79,14 @@ const userRouter = createBrowserRouter([  // logged-in users
   },
 ]);
 
-const pharmacyRouter = createBrowserRouter([  // logged-in users
+const pharmacyRouter = createBrowserRouter([  // logged-in pharmacists
   {
     path: "/",
     element: <PharmacistLayout />,
     children: [
       {
         path: "/",
-        element: <Dashboard />,
+        element: <Navigate to="/pharmacy" replace />, 
       },
       {
         path: "/pharmacy",
@@ -81,7 +94,11 @@ const pharmacyRouter = createBrowserRouter([  // logged-in users
       },
       {
         path: "/pharmacy/register",
-        element: <RegisterPharmacist />,  // Corrected this to use uppercase
+        element: <RegisterPharmacist />,  
+      },
+      {
+        path: "/landing",
+        element: <Landing />, 
       },
       {
         path: "*",

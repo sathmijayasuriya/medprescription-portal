@@ -47,7 +47,7 @@ export default function Feedbacks() {
   };
   return (
     <>
-      <Box sx={{ py: 15 }}>
+      <Box sx={{ py: 1 }}>
         <Container>
           <Grid container spacing={5} justifyContent="space-between">
             <Grid item xs={12} md={6}>

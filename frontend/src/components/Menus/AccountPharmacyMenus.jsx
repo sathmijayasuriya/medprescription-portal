@@ -5,30 +5,32 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-// import Settings from "@mui/icons-material/Settings";
-// import Logout from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../Redux/features/auth/authSlice";
 
-export default function AccountMenu() {
+export default function AccountMenuPharmacy() {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+
   const onClickLogOut = (e) => {
     e.preventDefault();
     dispatch(logout());
-    navigate("/");
+    navigate("/login"); // Redirect to login page after logout
   };
-  const { user } = useSelector((state) => state.auth);
+
+  const { pharmacy } = useSelector((state) => state.auth); // Assuming "pharmacy" is stored in Redux
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -42,8 +44,8 @@ export default function AccountMenu() {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
-              alt={user?.fullName}
-              src={user?.photoURL}
+              alt={pharmacy?.name}
+              src={pharmacy?.logoURL}
               sx={{ width: 32, height: 32 }}
             />
           </IconButton>
@@ -84,15 +86,18 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem component={Link} to={"/"}>
-          Home
+        {/* Pharmacy-specific menu items */}
+        <MenuItem component={Link} to={"/dashboard"}>
+          Dashboard
         </MenuItem>
-        <MenuItem component={Link} to={"/prescriptions/my-prescriptions"}>
-          My Prescriptions
+        <MenuItem component={Link} to={"/quotations"}>
+          Quotations
         </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to={"/user/account"}>Account</MenuItem>
+        <MenuItem component={Link} to={"/pharmacists/manage"}>
+          Manage Pharmacists
+        </MenuItem>
+        <MenuItem onClick={handleClose}>Account</MenuItem>
         <MenuItem onClick={(e) => onClickLogOut(e)}>
-          {/* <ListItemIcon><Logout fontSize="small" /></ListItemIcon> */}
           Logout
         </MenuItem>
       </Menu>

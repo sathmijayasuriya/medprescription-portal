@@ -3,31 +3,27 @@ import { Box, CssBaseline, Grid2 } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import Footer from '../components/Footers/Footer';
 import HeaderUser from '../components/Headers/HeaderUser';
+
 export default function UserLayout() {
   return (
     <>
- <CssBaseline />
+      <CssBaseline />
       <HeaderUser />
-      <Grid2
-        // container
-        direction="row"
-        justifyContent="center"
-        // alignItems="stretch"
+      <Box
         sx={{
-          height: "100%",
-          minHeight: "calc(100vh - 64px)",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh", // Ensures full viewport height
           bgcolor: "background.default",
         }}
       >
-          <Box
-            sx={{
-              height: "100%",
-            }}
-          >
-            <Outlet />
-          </Box>
-      <Footer/>
-      </Grid2>
+        <Box sx={{ flexGrow: 1 }}>
+          {/* This Box takes up the remaining space */}
+          <Outlet />
+        </Box>
+        <Footer />
+      </Box>
     </>
-  )
+  );
 }
+

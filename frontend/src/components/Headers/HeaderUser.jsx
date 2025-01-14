@@ -17,7 +17,7 @@ export default function HeaderUser() {
         }}
       >
         <Toolbar>
-          <Box component={Link} to={"/"}>
+          <Box component={Link} to={"/landing"}>
             <img alt="Logo" src={headerImage} height={20} />
           </Box>
           <Typography component="div" sx={{ flexGrow: 1 }}></Typography>

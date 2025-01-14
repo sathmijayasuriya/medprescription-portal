@@ -10,29 +10,38 @@ import {
   ListItemText,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import {Link} from "@mui/material";
+import { Link } from "@mui/material";
 
 const Footer = () => {
   return (
     <>
-      <Box sx={{ backgroundColor: "white", py: 5 ,borderTop:"1px solid rgb(240, 202, 216)", }}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          mt: 5,
+          py: 5,
+          borderTop: "1px solid rgb(240, 202, 216)",
+        }}
+      >
         <Container>
           <Grid container spacing={10}>
             {/* About Section */}
-            <Grid item xs={6 }>
-              <Box style ={{width:"70%"}}>
+            <Grid item xs={6}>
+              <Box style={{ width: "70%" }}>
                 <Typography variant="h5" gutterBottom>
                   About <strong style={{ color: "#D66C95" }}>GUARDIAN</strong>
                 </Typography>
                 <Typography>
-                MedPrescription Portal simplifies prescription management by connecting users and pharmacies.
-                 With secure uploads, quotations, and delivery, we ensure fast, reliable, and affordable healthcare solutions for everyone.
+                  MedPrescription Portal simplifies prescription management by
+                  connecting users and pharmacies. With secure uploads,
+                  quotations, and delivery, we ensure fast, reliable, and
+                  affordable healthcare solutions for everyone.
                 </Typography>
               </Box>
             </Grid>
 
             {/* Navigation Section */}
-            <Grid item xs={3} >
+            <Grid item xs={3}>
               <Typography variant="h5" gutterBottom>
                 Help
               </Typography>
@@ -60,15 +69,13 @@ const Footer = () => {
             </Grid>
 
             {/* Contact Info Section */}
-            <Grid item xs={3} >
+            <Grid item xs={3}>
               <Typography variant="h5" gutterBottom>
                 Contact Info
               </Typography>
               <List>
                 <ListItem disableGutters>
-                  <Typography>
-                    Colombo 05
-                  </Typography>
+                  <Typography>Colombo 05</Typography>
                 </ListItem>
                 <ListItem disableGutters>
                   <Link
@@ -79,7 +86,7 @@ const Footer = () => {
                       "&:hover": { color: "#D66C95" },
                     }}
                   >
-                    +2 392 3929 210
+                    +94 xxxxxxxxx
                   </Link>
                 </ListItem>
                 <ListItem disableGutters>
