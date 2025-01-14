@@ -26,11 +26,11 @@ export default function DiscountSection() {
         <Grid container justifyContent="center" textAlign="center">
           <Grid item xs={12} sm={10} md={7}>
             <Typography variant="h4" gutterBottom>
-              Sign up for discount up to 55% OFF
+              Sign up for discount up to 15% OFF
             </Typography>
             <Typography variant="body1" paragraph>
-            Register today and enjoy exclusive discounts of up to 55% on your first prescription order, making healthcare more affordable.            </Typography>
-            <Button variant="contained"  href="#">
+            Register today and enjoy exclusive discounts of up to 15% on your first prescription order, making healthcare more affordable.            </Typography>
+            <Button variant="contained"  href="/auth/register">
               Sign up
             </Button>
           </Grid>

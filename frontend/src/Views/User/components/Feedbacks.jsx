@@ -13,22 +13,22 @@ export default function Feedbacks() {
     {
       image: user4,
       text: "I’ve been using MedPrescription Portal for months, and it’s been a game-changer. The platform is so easy to use, and I love how quickly I receive quotations from pharmacies. The free delivery option is an added bonus, making it so convenient to get my medications at home.",
-      author: "Kelly felinate",
+      author: "Dewni jayasuriya",
     },
     {
       image: user2,
       text: "As someone who often needs prescriptions, this platform has made my life easier. The process to upload my prescriptions is straightforward, and the pharmacy quotations are always detailed and transparent.",
-      author: "Rebecca Morando",
+      author: "Imani caldera",
     },
     {
       image: user3,
       text: "MedPrescription Portal has been incredible. The platform provides real-time updates on my prescription statuses, and the ability to manage quotations from different pharmacies is fantastic. Customer support is very responsive, and I love the seamless experience.",
-      author: "noha Gallone",
+      author: "Ayu wirasinghe",
     },
     {
       image: user1,
       text: "I’ve never had such an efficient and affordable experience with prescription management. The portal allows me to receive competitive quotes from various pharmacies, and I appreciate how the pharmacies always deliver on time.",
-      author: "Andrew Neel",
+      author: "Andrew perera",
     },
   ];
   const reasons = [

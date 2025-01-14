@@ -28,12 +28,23 @@ export default function Features() {
       ];
   return (
     <>
- <Box py={5}>
+ <Box id="features" py={10} >
       <Container>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Box textAlign="center" p={3} border={1} borderColor="grey.200" borderRadius={2}>
+              <Box  textAlign="center" 
+                    p={3} border={1.9} 
+                    borderColor="grey.200" 
+                    borderRadius={2}
+                    sx={{
+                      transition: "background-color 0.3s ease, transform 0.3s ease",
+                      "&:hover": {
+                        background: "linear-gradient(rgb(250, 237, 242) 10%,rgb(255, 255, 255) 90%)",
+                        transform: "scale(1.05)", // Slight zoom effect
+                      },
+                    }}
+                    >
                 <Box mb={2}>{feature.icon}</Box>
                 <Typography variant="h6" gutterBottom>
                   <Link href={feature.link} underline="none" color="inherit">

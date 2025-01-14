@@ -1,6 +1,5 @@
 import { Box, Toolbar } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import headerImage from "../../Assets/headerImage.png";
 import {
   Container,
@@ -11,11 +10,12 @@ import {
   ListItemText,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import {Link} from "@mui/material";
 
 const Footer = () => {
   return (
     <>
-      <Box sx={{ backgroundColor: "white", py: 5  }}>
+      <Box sx={{ backgroundColor: "white", py: 5 ,borderTop:"1px solid rgb(240, 202, 216)", }}>
         <Container>
           <Grid container spacing={10}>
             {/* About Section */}
@@ -34,14 +34,14 @@ const Footer = () => {
             {/* Navigation Section */}
             <Grid item xs={3} >
               <Typography variant="h5" gutterBottom>
-                Navigation
+                Help
               </Typography>
               <List>
                 {[
-                  "Supplements",
-                  "Vitamins",
-                  "Diet & Nutrition",
-                  "Tea & Coffee",
+                  "Privacy Policy",
+                  "Returns & Refund Policy",
+                  "Delivery Policy",
+                  "FAQ",
                 ].map((item, index) => (
                   <ListItem key={index} disableGutters>
                     <Link
@@ -49,7 +49,7 @@ const Footer = () => {
                       sx={{
                         textDecoration: "none",
                         color: "inherit",
-                        "&:hover": { color: "#1976d2" },
+                        "&:hover": { color: "#D66C95" },
                       }}
                     >
                       {item}
@@ -74,9 +74,9 @@ const Footer = () => {
                   <Link
                     href="tel://070529xxx"
                     sx={{
-                      textDecoration: "none",
+                      textDecoration: "none !important", // Add !important to override any conflicting styles
                       color: "inherit",
-                      "&:hover": { color: "#1976d2" },
+                      "&:hover": { color: "#D66C95" },
                     }}
                   >
                     +2 392 3929 210
@@ -88,10 +88,10 @@ const Footer = () => {
                     sx={{
                       textDecoration: "none",
                       color: "inherit",
-                      "&:hover": { color: "#1976d2" },
+                      "&:hover": { color: "#D66C95" },
                     }}
                   >
-                    emailaddress@domain.com
+                    guardianlk@gmail.com
                   </Link>
                 </ListItem>
               </List>

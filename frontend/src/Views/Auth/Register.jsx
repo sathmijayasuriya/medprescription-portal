@@ -102,7 +102,7 @@ const Register = () => {
           mx: "auto",
           mt: 5,
           boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-          backdropFilter: "blur(10px)",
+          // backdropFilter: "blur(5px)",
           borderColor: "#b4b4b4",
           borderWidth: 1,
           borderStyle: "solid",
