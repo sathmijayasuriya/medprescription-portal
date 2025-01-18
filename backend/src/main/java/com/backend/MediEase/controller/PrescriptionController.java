@@ -1,6 +1,5 @@
 package com.backend.MediEase.controller;
 
-
 import com.backend.MediEase.constants.RestURI;
 import com.backend.MediEase.dto.PrescriptionResponseDTO;
 import com.backend.MediEase.service.PrescriptionService;

@@ -15,7 +15,9 @@ import UserDashboard from "../Views/User/UserDashboard";
 import Landing from "../Views/Landing";
 import RegisterPharmacist from "../Views/Auth/RegisterPharmacist";
 import MyAccount from "../Views/User/MyAccount";
-
+import Support from "../Views/Support";
+import About from "../Views/About";
+import Channelling from "../Views/Channelling";
 const authRouter = createBrowserRouter([ //all users
   {
     path: "/",
@@ -30,12 +32,24 @@ const authRouter = createBrowserRouter([ //all users
         element: <Landing />,
       },
       {
+        path: "/support",
+        element: <Support />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
         path: "/auth/sign-in",
         element: <Login />,
       },
       {
         path: "/auth/register",
         element: <Register />,
+      },
+      {
+        path: "/channel", 
+        element: <Channelling />,
       },
       {
         path: "*",
@@ -72,6 +86,14 @@ const userRouter = createBrowserRouter([  // logged-in users
         element: <Landing />, 
       },
       {
+        path: "/support",
+        element: <Support />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
         path: "*",
         element: <Navigate to="/" replace />,
       },
@@ -99,6 +121,14 @@ const pharmacyRouter = createBrowserRouter([  // logged-in pharmacists
       {
         path: "/landing",
         element: <Landing />, 
+      },
+      {
+        path: "/support",
+        element: <Support />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "*",
