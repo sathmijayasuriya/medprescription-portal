@@ -17,7 +17,7 @@ import RegisterPharmacist from "../Views/Auth/RegisterPharmacist";
 import MyAccount from "../Views/User/MyAccount";
 import Support from "../Views/Support";
 import About from "../Views/About";
-import Channelling from "../Views/Channelling";
+
 const authRouter = createBrowserRouter([ //all users
   {
     path: "/",
@@ -47,10 +47,7 @@ const authRouter = createBrowserRouter([ //all users
         path: "/auth/register",
         element: <Register />,
       },
-      {
-        path: "/channel", 
-        element: <Channelling />,
-      },
+
       {
         path: "*",
         element: <Navigate to="/" replace />,

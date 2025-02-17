@@ -30,9 +30,9 @@ export default function HeaderAuth() {
           }}
         >
           {/* Logo on the left */}
-          <Box component={Link} to={"/"} paddingX={2}>
-            <img alt="Logo" src={headerImage} height={20} />
-          </Box>
+            <Box component={Link} to={"/"} paddingX={2}>
+              <img alt="Logo" src={headerImage} height={20} />
+            </Box>
 
           {/* Center Links */}
           <Stack
